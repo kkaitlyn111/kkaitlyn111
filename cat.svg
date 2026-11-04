@@ -1,49 +1,78 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 72" width="800" height="72">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 110" width="840" height="110" role="img" aria-label="A fluffy grey and white cat strolling across the banner">
   <defs>
-    <filter id="rough" x="-5%" y="-10%" width="110%" height="120%">
-      <feTurbulence type="fractalNoise" baseFrequency="0.35" numOctaves="2" seed="7"/>
-      <feDisplacementMap in="SourceGraphic" scale="5"/>
+    <filter id="crayon" x="-5%" y="-10%" width="110%" height="120%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.09" numOctaves="2" seed="7" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="5" xChannelSelector="R" yChannelSelector="G"/>
     </filter>
   </defs>
   <style>
-    .walk { animation: walk 24s linear infinite; }
+    :root { --ln: #262626; --fur: #b4bbc7; --far: #9da5b2; --wh: #ffffff; --wh2: #eceef2; --shade: #dfe2e8; --pink: #e58c99; --shadow: #a3a3a3; }
+    @media (prefers-color-scheme: dark) { :root { --shadow: #3d424a; } }
+    .o { stroke: var(--ln); stroke-width: 6; stroke-linejoin: round; stroke-linecap: round; }
+    .t { stroke: var(--ln); stroke-width: 4; stroke-linecap: round; fill: none; }
+
+    .walker { animation: walk 20s linear infinite; }
+    @keyframes walk { from { transform: translateX(-180px); } to { transform: translateX(900px); } }
+
     .bob { animation: bob 0.55s ease-in-out infinite alternate; }
-    .leg { transform-box: fill-box; transform-origin: 50% 8%; animation: step 0.55s ease-in-out infinite alternate; }
-    .leg.b { animation-delay: -0.55s; }
-    .tail { transform-box: fill-box; transform-origin: 0% 40%; animation: swish 1.1s ease-in-out infinite alternate; }
-    .o { stroke: #222226; stroke-width: 5; stroke-linejoin: round; stroke-linecap: round; }
-    .coat { fill: #c5c8d0; }
-    .wh { fill: #ffffff; }
-    .shade { fill: #e4e5ea; }
-    @keyframes walk { from { transform: translateX(-220px); } to { transform: translateX(820px); } }
     @keyframes bob { from { transform: translateY(0); } to { transform: translateY(-3px); } }
-    @keyframes step { from { transform: rotate(-14deg); } to { transform: rotate(14deg); } }
-    @keyframes swish { from { transform: rotate(-3deg); } to { transform: rotate(3deg); } }
+
+    .leg { transform-box: fill-box; transform-origin: 50% 0%; animation: stepA 1.1s ease-in-out infinite alternate; }
+    .leg.B { animation-name: stepB; }
+    @keyframes stepA { from { transform: rotate(24deg); } to { transform: rotate(-20deg); } }
+    @keyframes stepB { from { transform: rotate(-20deg); } to { transform: rotate(24deg); } }
+
+    .tail { transform-box: view-box; transform-origin: 375px 90px; animation: sway 2.2s ease-in-out infinite alternate; }
+    @keyframes sway { from { transform: rotate(2.5deg); } to { transform: rotate(-3.5deg); } }
   </style>
-  <g class="walk">
-    <g transform="translate(210,-56) scale(-0.3,0.3)">
-      <path d="M150 405 Q395 388 645 400 Q640 418 395 420 Q160 420 150 405 Z" fill="#a3a3a8" opacity="0.55"/>
-      <g filter="url(#rough)">
-        <g class="leg b"><path class="o wh" d="M290 335 L296 398 Q294 410 306 410 L322 410 Q331 406 325 397 L328 350 Z"/></g>
-        <g class="leg"><path class="o wh" d="M418 345 L405 393 Q398 410 411 410 L426 410 Q434 405 428 395 L448 350 Z"/></g>
-        <g class="bob">
-          <g class="tail">
-            <path class="o coat" d="M488 244 C 540 258, 610 278, 666 296 C 650 304, 640 306, 630 310 C 600 318, 560 322, 530 318 C 508 314, 496 304, 490 296 Z"/>
-            <path class="wh" d="M500 296 C 520 312, 560 316, 600 312 L 622 318 L 612 324 L 624 330 L 600 330 L 606 338 L 584 332 L 584 342 L 566 333 L 560 342 L 548 332 L 538 340 L 530 330 L 514 334 L 512 322 L 500 318 Z"/>
-            <path class="o" d="M622 318 L612 324 L624 330 L600 330 L606 338 L584 332 L584 342 L566 333 L560 342 L548 332 L538 340 L530 330 L514 334 L512 322 L500 318" fill="none" stroke-width="3.5"/>
-          </g>
-          <path class="o coat" d="M146 318 C 136 290, 144 258, 160 242 L 168 194 L 192 222 C 240 206, 310 200, 370 206 C 430 212, 475 222, 496 248 C 506 280, 500 325, 488 350 L 336 354 C 318 348, 300 338, 286 334 C 262 336, 245 330, 234 330 C 214 326, 196 324, 182 325 C 165 326, 152 324, 146 318 Z"/>
-          <path class="wh" d="M147 312 C 160 300, 178 292, 196 290 L 206 280 L 214 292 L 226 272 L 232 286 L 244 268 L 252 284 L 266 286 L 262 300 L 272 312 L 262 322 L 270 332 L 246 332 C 230 328, 200 326, 182 327 C 165 327, 152 325, 147 318 Z"/>
-          <path class="wh" d="M336 344 L 350 338 L 360 344 L 376 336 L 390 344 L 404 338 L 418 344 L 434 336 L 446 344 L 462 338 L 476 344 L 488 340 L 486 352 L 336 355 Z"/>
-          <path class="o" d="M336 354 C 400 352, 450 352, 488 350" fill="none"/>
-          <path class="o" d="M146 318 C 152 324, 165 326, 182 325 C 196 324, 214 326, 234 330" fill="none"/>
-          <path class="o coat" d="M140 228 L 150 232 L 158 246 L 148 252 Z"/>
-          <path d="M171 204 L 178 226 L 186 224 Z" fill="#e88f99"/>
-          <ellipse cx="164" cy="280" rx="3.5" ry="7" fill="#222226"/>
-          <path d="M128 302 l 14 3 M124 312 l 16 0 M130 320 l 12 -4" stroke="#222226" stroke-width="2.6" stroke-linecap="round"/>
+
+  <g class="walker">
+    <g transform="translate(0 28) scale(0.3)">
+      <ellipse cx="270" cy="232" rx="250" ry="11" fill="var(--shadow)" opacity=".55"/>
+
+      <g class="bob" filter="url(#crayon)">
+        <!-- far legs -->
+        <g class="leg B"><path class="o" fill="var(--far)" d="M174 120 Q175 180 180 220 Q173 229 186 231 L204 231 Q212 229 209 219 Q213 180 216 120 Z"/><path fill="var(--wh2)" d="M177.8 192 Q195 197 210.6 192 L209 219 Q212 229 204 231 L186 231 Q173 229 180 220 Z"/><path class="o" fill="none" d="M180 220 Q173 229 186 231 L204 231 Q212 229 209 219"/><path class="t" d="M187 224 l1 6 M195 224 l1 6"/></g>
+        <g class="leg"><path class="o" fill="var(--far)" d="M297 120 Q298 180 303 220 Q296 229 309 231 L327 231 Q335 229 332 219 Q336 180 339 120 Z"/><path fill="var(--wh2)" d="M300.8 192 Q318 197 333.6 192 L332 219 Q335 229 327 231 L309 231 Q296 229 303 220 Z"/><path class="o" fill="none" d="M303 220 Q296 229 309 231 L327 231 Q335 229 332 219"/><path class="t" d="M310 224 l1 6 M318 224 l1 6"/></g>
+
+        <!-- near legs -->
+        <g class="leg"><path class="o" fill="var(--fur)" d="M119 128 Q120 188 125 220 Q118 229 131 231 L149 231 Q157 229 154 219 Q158 188 161 128 Z"/><path fill="var(--wh)" d="M122.8 192 Q140 197 155.6 192 L154 219 Q157 229 149 231 L131 231 Q118 229 125 220 Z"/><path class="o" fill="none" d="M125 220 Q118 229 131 231 L149 231 Q157 229 154 219"/><path class="t" d="M132 224 l1 6 M140 224 l1 6"/></g>
+        <g class="leg B"><path class="o" fill="var(--fur)" d="M341 118 Q342 178 347 220 Q340 229 353 231 L371 231 Q379 229 376 219 Q380 178 383 118 Z"/><path fill="var(--wh)" d="M344.8 192 Q362 197 377.6 192 L376 219 Q379 229 371 231 L353 231 Q340 229 347 220 Z"/><path class="o" fill="none" d="M347 220 Q340 229 353 231 L371 231 Q379 229 376 219"/><path class="t" d="M354 224 l1 6 M362 224 l1 6"/></g>
+
+        <!-- tail: grey plume with white fringe underneath -->
+        <g class="tail">
+          <path class="o" fill="var(--fur)" d="M366 64 C 420 78, 480 96, 548 112 C 520 120, 470 124, 420 122 C 398 120, 382 116, 368 112 Z"/>
+          <path fill="var(--wh)" d="M402 118 C 450 123, 505 121, 546 113 l-14 10 8 3 -16 6 6 4 -18 3 4 6 -18 -1 2 6 -18 -4 2 6 -16 -6 C 420 140, 408 130, 402 118 Z"/>
+          <path class="o" fill="none" d="M546 113 l-14 10 8 3 -16 6 6 4 -18 3 4 6 -18 -1 2 6 -18 -4 2 6 -16 -6 C 420 140, 408 130, 402 118"/>
+          <path class="t" d="M470 130 l6 6 M440 132 l4 6"/>
         </g>
-        <g class="leg"><path class="o coat" d="M232 326 L 204 366 L 186 396 Q 180 410 196 410 L 211 410 Q 220 405 215 396 L 238 366 L 266 334 Z"/><path class="wh" d="M206 364 L 188 396 Q 183 407 196 407 L 210 407 Q 216 403 213 397 L 230 370 Z"/><path class="o" d="M200 410 v-7 M206 410 v-7" stroke-width="2.6"/></g>
-        <g class="leg b"><path class="o coat" d="M486 326 L 508 368 L 526 396 Q 534 410 548 405 Q 552 398 544 392 L 524 352 L 500 312 Z"/><path class="wh" d="M506 364 L 526 396 Q 533 406 545 403 Q 548 397 542 393 L 524 360 Z"/><path class="o" d="M532 405 l 3 -7 M538 404 l 2 -7" stroke-width="2.6"/></g>
+
+        <!-- body + head silhouette -->
+        <path class="o" fill="var(--fur)" d="M20 132
+          C 16 110, 26 88, 46 72
+          C 62 56, 82 40, 112 30
+          C 162 18, 262 18, 336 40
+          C 368 50, 384 70, 386 96
+          C 390 130, 378 158, 350 166
+          C 300 174, 232 174, 190 168
+          C 156 164, 118 152, 82 149
+          C 56 149, 34 146, 20 132 Z"/>
+
+        <!-- white cheek / chest ruff -->
+        <path fill="var(--shade)" d="M60 146 C 90 150, 118 152, 140 158 C 120 140, 112 130, 106 124 Z"/>
+        <path fill="var(--wh)" d="M22 134 C 30 128, 40 122, 50 118 l6 -16 6 12 8 -18 6 16 10 -10 0 14 12 -4 -6 14 C 104 146, 92 148, 72 149 C 48 149, 32 145, 22 134 Z"/>
+        <!-- white belly fluff -->
+        <path fill="var(--wh)" d="M196 168 C 250 172, 300 171, 356 164 C 348 174, 330 180, 300 180 l-8 -5 -8 6 -10 -5 -8 6 -10 -5 -10 5 -8 -5 C 228 180, 206 176, 196 168 Z"/>
+        <path class="t" d="M300 180 l-8 -5 -8 6 -10 -5 -8 6 -10 -5 -10 5 -8 -5"/>
+
+        <!-- ears -->
+        <path class="o" fill="var(--fur)" d="M48 64 L52 12 L86 40 Z"/>
+        <path fill="var(--pink)" d="M55 52 L56 24 L74 40 Z"/>
+        <path class="o" fill="var(--far)" d="M24 72 L14 44 L44 58 Z"/>
+
+        <!-- face -->
+        <ellipse cx="38" cy="108" rx="3.6" ry="6.5" fill="var(--ln)"/>
+        <path class="t" d="M-6 126 l13 2 M-4 135 l13 -3"/>
       </g>
     </g>
   </g>
